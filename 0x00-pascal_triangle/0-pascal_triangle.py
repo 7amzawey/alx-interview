@@ -5,6 +5,7 @@ pascal_triangle
 
 
 def pascal_triangle(n):
+    """Pascal_triangle"""
     my_list = []
     if (n <= 0):
         return my_list
