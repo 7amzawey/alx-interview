@@ -1,1 +1,1 @@
-Pascal triangle
+interviews prepration
