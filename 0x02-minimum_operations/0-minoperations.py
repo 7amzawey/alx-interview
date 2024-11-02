@@ -8,7 +8,7 @@ def minOperations(n):
         return 0
 
     factor = 2
-    ops = 0 
+    ops = 0
     current_number = n
 
     while current_number > 1:
