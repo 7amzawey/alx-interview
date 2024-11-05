@@ -1,45 +1,48 @@
 #!/usr/bin/python3
-"""Read a stdin line by line and computes metrics."""
-
-
+"""
+0-stats module
+"""
 import sys
 
 
-def print_stats(total_size, status_dict):
-    """Print the stats of the file."""
-    print(f"File size: {total_size}")
-    for key, value in sorted(status_dict.items()):
-        print(f"{key}: {value}")
+def print_msg(dict_sc, total_file_size):
+    """
+    Prints to stdout
+    """
+
+    print("File size: {}".format(total_file_size))
+    for key, val in sorted(dict_sc.items()):
+        if val != 0:
+            print("{}: {}".format(key, val))
 
 
-def main():
-    """Print out the metrics."""
-    total_size = 0
-    status_dict = {}
-    line_count = 0
-    try:
-        for line in sys.stdin:
-            line = line.strip()
-            parts = line.split(' ')
-            total_size += int(parts[8])
-            status = int(parts[7])
+total_file_size = 0
+code = 0
+counter = 0
+dict_sc = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
+        }
 
-            if status in status_dict:
-                status_dict[status] += 1
-            else:
-                status_dict[status] = 1
-
-            line_count += 1
-
-            if line_count == 10:
-                print_stats(total_size, status_dict)
-                line_count = 0
-                total_size = 0
-                status_dict = {}
-
-    except KeyboardInterrupt:
-        print_stats(total_size, status_dict)
-
-
-if __name__ == "__main__":
-    main()
+try:
+    for line in sys.stdin:
+        parsed_line = line.split()
+        parsed_line = parsed_line[::-1]
+        if len(parsed_line) > 2:
+            counter += 1
+            if counter <= 10:
+                total_file_size += int(parsed_line[0])
+                code = parsed_line[1]
+                if (code in dict_sc.keys()):
+                    dict_sc[code] += 1
+            if (counter == 10):
+                print_msg(dict_sc, total_file_size)
+                counter = 0
+finally:
+    print_msg(dict_sc, total_file_size)
