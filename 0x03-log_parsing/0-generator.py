@@ -6,7 +6,7 @@ import datetime
 
 for i in range(10000):
     # Sleep for a fixed time, e.g., 0.01 seconds (10 milliseconds)
-    sleep(0.01)
+    sleep(random.random())
     sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
         random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
         datetime.datetime.now(),
