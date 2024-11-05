@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Read a stdin line by line and computes metrics"""
+"""Read a stdin line by line and computes metrics."""
 
 
 import re
@@ -14,16 +14,19 @@ PATTERN = (
 
 
 def line_is_valid(line):
+    """Check if the line is valid."""
     return re.match(PATTERN, line) is not None
 
 
 def print_stats(total_size, status_dict):
+    """Print the stats of the file."""
     print(f"File size: {total_size}")
     for key, value in sorted(status_dict.items()):
         print(f"{key}: {value}")
 
 
 def main():
+    """Print out the metrics."""
     total_size = 0
     status_dict = {}
     line_count = 0
