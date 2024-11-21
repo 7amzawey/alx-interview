@@ -12,6 +12,4 @@ def rotate_2d_matrix(matrix: List[List[int]]):
     print(matrix)
     for i in range(n):
         for j in range(n-1, n):
-            print(f'matrix[{i},{j}] = {matrix[i][j]}')
-            print(f'matrix[{i},{j-n+1}] = {matrix[i][j-n+1]}')
             matrix[i][j], matrix[i][j-n+1] = matrix[i][j-n+1], matrix[i][j]
