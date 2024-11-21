@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """Rotate the matrix."""
-from typing import List
 
 
-def rotate_2d_matrix(matrix: List[List[int]]):
+def rotate_2d_matrix(matrix):
     """Rotate the matrix 90 degrees."""
     n = len(matrix)
     # Transpose the matrix
