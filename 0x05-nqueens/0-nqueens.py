@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 """Place N non-attacking queens on NxN chessboard."""
 import sys
-from typing import List
 
 
-def nqueens(n: int) -> List[List[int]]:
+def nqueens(n):
     """Solve the nqueen problem with recursive backtracking."""
     cols = set()
     posDiag = set()
     negDiag = set()
     result = []
-    solution: List[List[int]] = []
+    solution = []
 
     def backtrack(r):
         """Backtrack funciton."""
@@ -36,8 +35,19 @@ def nqueens(n: int) -> List[List[int]]:
 
 
 if __name__ == "__main__":
-    """print the solution."""
-    n = int(sys.argv[1])
+    """Print the solution."""
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    try:
+        n = int(sys.argv[1])
+        if n < 4:
+            print('N must be at least 4')
+            sys.exit(1)
+    except ValueError:
+        print('N must be a number')
+        sys.exit(1)
+
     solutions = nqueens(n)
     for solution in solutions:
         print(solution)
